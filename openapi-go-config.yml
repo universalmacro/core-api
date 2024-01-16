@@ -1,2 +1,1 @@
-additionalProperties:
-  packageName: "github.com/universalmacro/core-api"
+output: "core-go-sdk"
