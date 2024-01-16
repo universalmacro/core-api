@@ -1,4 +1,4 @@
-name: Publish Typescript SDK
+name: Publish Go SDK
 
 on:
   workflow_dispatch:
