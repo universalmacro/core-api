@@ -1,4 +1,4 @@
-name: Publish SDK
+name: Publish TS SDK
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   generate-typescript-client:
     runs-on: ubuntu-latest
-    name: Publish SDK
+    name: Publish TS SDK
     steps:
       # Checkout your code
       - name: Checkout
