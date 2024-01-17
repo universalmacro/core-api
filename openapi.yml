@@ -185,6 +185,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/ID'
       operationId: GetNode
+      security:
+        - ApiKeyAuth: []
       responses:
         '200':
           description: 'Get Node info'
@@ -199,6 +201,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/ID'
       operationId: GetNodeRedisConfig
+      security:
+        - ApiKeyAuth: []
       responses:
         '200':
           description: 'Get Node info'
@@ -231,6 +235,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/ID'
       operationId: GetNodeDatabaseConfig
+      security:
+        - ApiKeyAuth: []
       responses:
         '200':
           description: 'Get Node info'
@@ -262,6 +268,10 @@ components:
       type: apiKey
       in: header
       name: X-API-KEY
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     CreateNodeRequest:
       type: object
