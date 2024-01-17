@@ -194,6 +194,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Node'
+    delete:
+      tags:
+        - Node
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      operationId: DeleteNode
+      responses:
+        '204':
+          description: 'Get Self info'
   /nodes/{id}/config/redis:
     get:
       tags: [Node]
