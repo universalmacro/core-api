@@ -13,6 +13,7 @@ tags:
   - name: Admin
   - name: Session
   - name: Node
+  - name: Merchant
 paths:
   /admins:
     post:
@@ -275,12 +276,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DBConfig'
+  /nodes/{id}/merchants:
+    get:
+      tags: [Merchant]
+      description: List merchants
+      operationId: ListNodeMerchants
+      parameters:
+        - $ref: '#/components/parameters/IndexParam'
+        - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: 'List Merchant of node'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantList'
+    post:
+      tags: [Merchant]
+      description: Add merchant to node
+      operationId: AddMerchantToNode
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMerchantRequest'
+      responses:
+        '200':
+          description: 'Add Merchant to node'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Merchant'
 components:
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
-      name: X-API-KEY
+      name: ApiKey
     BearerAuth:
       type: http
       scheme: bearer
@@ -469,6 +503,52 @@ components:
           type: integer
           format: int64
           description: 'Total page'
+    CreateMerchantRequest:
+      type: object
+      required:
+        - account
+        - password
+      properties:
+        account:
+          type: string
+        password:
+          type: string
+    Merchant:
+      type: object
+      required:
+        - id
+        - nodeId
+        - account
+        - name
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: string
+        nodeId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: integer
+          format: int64
+        updatedAt:
+          type: integer
+          format: int64
+    MerchantList:
+      type: object
+      required:
+        - items
+        - pagination
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Merchant'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
   parameters:
     Ordering:
       name: ordering
