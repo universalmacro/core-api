@@ -20,3 +20,6 @@ jobs:
           openapi-file: openapi.yml
           generator: go
           config-file: openapi-go-config.yml
+      - name: Push to core-go-sdk
+        run: |
+          sh git_push.sh universalmacro core-go-sdk
