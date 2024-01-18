@@ -204,6 +204,42 @@ paths:
       responses:
         '204':
           description: 'Get Self info'
+  /nodes/{id}/config:
+    get:
+      tags: [Node]
+      description: Get node info by id
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      operationId: GetNodeConfig
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: 'Get Node info'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeConfig'
+        '204':
+          description: 'Not set yet'
+    put:
+      tags: [Node]
+      description: Get node info by id
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      operationId: UpdateNodeConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeConfig'
+      responses:
+        '200':
+          description: 'Get Node info'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeConfig'
   /nodes/{id}/config/redis:
     get:
       tags: [Node]
@@ -276,6 +312,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DBConfig'
+ 
   /nodes/{id}/merchants:
     get:
       tags: [Merchant]
@@ -364,6 +401,10 @@ components:
     NodeConfig:
       type: object
       properties:
+        apiConfig:
+          $ref: '#/components/schemas/ApiConfig'
+        server:
+          $ref: '#/components/schemas/ServerConfig'
         database:
           $ref: '#/components/schemas/DBConfig'
         redis:
@@ -376,6 +417,25 @@ components:
         port:
           type: string
         password:
+          type: string
+    ApiConfig:
+      type: object
+      properties:
+        merchantUrl:
+          type: string
+    ServerConfig:
+      type: object
+      properties:
+        port:
+          type: string
+        jwtSecret:
+          type: string
+    TencentCloudConfig:
+      type: object
+      properties:
+        secretId:
+          type: string
+        secretKey:
           type: string
     DBConfig:
       type: object
