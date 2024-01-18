@@ -212,6 +212,7 @@ paths:
         - $ref: '#/components/parameters/ID'
       operationId: GetNodeConfig
       security:
+        - BearerAuth: []
         - ApiKeyAuth: []
       responses:
         '200':
