@@ -6,8 +6,7 @@
 git_user_id=$1
 git_repo_id=$2
 git_token=$3
-release_note=$4
-git_host=$5
+git_host=$4
 
 
 if [ "$git_host" = "" ]; then
@@ -25,19 +24,16 @@ if [ "$git_repo_id" = "" ]; then
     echo "[INFO] No command line input provided. Set \$git_repo_id to $git_repo_id"
 fi
 
-if [ "$release_note" = "" ]; then
-    release_note="Minor update"
-    echo "[INFO] No command line input provided. Set \$release_note to $release_note"
-fi
-
 # Initialize the local directory as a Git repository
 git init
 
 git add .
 
 # Commits the tracked changes and prepares them to be pushed to a remote repository.
-git commit -m "$release_note"
-git checkout -b main
+git commit -m "feat: api updated by cicd"
 
-git remote add origin https://chenyunda218:"${git_token}"@${git_host}/${git_user_id}/${git_repo_id}.git
+git checkout -b main
+echo $git_token
+git remote add origin https://chenyunda218:"$git_token"@github.com/universalmacro/core-go-sdk.git
 git push -u --force origin main 2>&1 | grep -v 'To https'
+
