@@ -25,5 +25,4 @@ jobs:
           git config --global user.name "Dan Chen"
           go env -w GOPRIVATE=github.com/universalmacro/*
           cd go-client
-          ls
           sh git_push.sh universalmacro core-go-sdk ${{ secrets.GIT_TOKEN }}
