@@ -1,6 +1,9 @@
 name: Publish Go SDK
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -21,5 +24,5 @@ jobs:
           git config --global user.email "chenyunda218@gmail.com"
           git config --global user.name "Dan Chen"
           go env -w GOPRIVATE=github.com/universalmacro/*
-          git config --global url."https://${GIT_NAME}:${GIT_TOKEN}@github.com".insteadOf "https://github.com"
+          git config --global url."https://${GIT_NAME}:${GO_PUBLISH_TOKEN}@github.com".insteadOf "https://github.com"
           sh git_push.sh universalmacro core-go-sdk
