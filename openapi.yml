@@ -401,7 +401,7 @@ components:
     NodeConfig:
       type: object
       properties:
-        apiConfig:
+        api:
           $ref: '#/components/schemas/ApiConfig'
         server:
           $ref: '#/components/schemas/ServerConfig'
