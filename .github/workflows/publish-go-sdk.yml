@@ -22,6 +22,7 @@ jobs:
         with:
           openapi-file: openapi.yml
           generator: go
+          config-file: openapi-ts-config.yml
       - name: Push to core-go-sdk
         run: |
           git config --global user.email "${{env.EMAIL}}"
