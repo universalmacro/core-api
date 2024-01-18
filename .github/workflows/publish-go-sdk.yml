@@ -19,4 +19,6 @@ jobs:
           config-file: openapi-go-config.yml
       - name: Push to core-go-sdk
         run: |
+          go env -w GOPRIVATE=github.com/universalmacro/*
+          git config --global url."https://${GIT_NAME}:${GIT_TOKEN}@github.com".insteadOf "https://github.com"
           sh git_push.sh universalmacro core-go-sdk
