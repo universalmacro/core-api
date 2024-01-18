@@ -5,8 +5,10 @@
 
 git_user_id=$1
 git_repo_id=$2
-release_note=$3
-git_host=$4
+git_token=$3
+release_note=$4
+git_host=$5
+
 
 if [ "$git_host" = "" ]; then
     git_host="github.com"
@@ -41,11 +43,11 @@ git commit -m "$release_note"
 git_remote=$(git remote)
 if [ "$git_remote" = "" ]; then # git remote not defined
 
-    if [ "$GO_PUBLISH_TOKEN" = "" ]; then
-        echo "[INFO] \$GO_PUBLISH_TOKEN (environment variable) is not set. Using the git credential in your environment."
+    if [ "$git_token" = "" ]; then
+        echo "[INFO] \$GIT_TOKEN (environment variable) is not set. Using the git credential in your environment."
         git remote add origin https://${git_host}/${git_user_id}/${git_repo_id}.git
     else
-        git remote add origin https://${git_user_id}:"${GO_PUBLISH_TOKEN}"@${git_host}/${git_user_id}/${git_repo_id}.git
+        git remote add origin https://${git_user_id}:"${git_token}"@${git_host}/${git_user_id}/${git_repo_id}.git
     fi
 
 fi
