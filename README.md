@@ -1,5 +1,5 @@
 # Command
 
 ```bash
-openapi-generator generate -i ./openapi.yml -g go -o ./core-go-sdk
+openapi-generator generate -i ./openapi.yml -g go -o ./core-go-sdk --additional-properties=withGoMod=false
 ```
