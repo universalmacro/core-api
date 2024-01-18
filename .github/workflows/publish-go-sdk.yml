@@ -16,7 +16,6 @@ jobs:
         with:
           openapi-file: openapi.yml
           generator: go
-          config-file: openapi-go-config.yml
       - name: Push to core-go-sdk
         run: |
           go env -w GOPRIVATE=github.com/universalmacro/*
