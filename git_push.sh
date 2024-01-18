@@ -39,4 +39,4 @@ git add .
 git commit -m "$release_note"
 
 git remote add origin https://${git_user_id}:"${GIT_TOKEN}"@${git_host}/${git_user_id}/${git_repo_id}.git
-git git push -u origin main 2>&1 | grep -v 'To https'
+git push -u origin main 2>&1 | grep -v 'To https'
