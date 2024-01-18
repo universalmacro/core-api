@@ -25,4 +25,4 @@ jobs:
           git config --global user.name "Dan Chen"
           go env -w GOPRIVATE=github.com/universalmacro/*
           git config --global url."https://${GIT_NAME}:${GO_PUBLISH_TOKEN}@github.com".insteadOf "https://github.com"
-          sh git_push.sh universalmacro core-go-sdk ${{ secrets.GIT_TOKEN }}
+          sh git_push.sh universalmacro core-go-sdk ${{ secrets.GO_CICD }}
