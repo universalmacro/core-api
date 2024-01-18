@@ -33,6 +33,6 @@ git add .
 git commit -m "feat: api updated by cicd"
 
 git checkout -b main
-git remote add origin https://chenyunda218:"$git_token"@github.com/universalmacro/core-go-sdk.git
+git remote add origin https://chenyunda218:"$git_token"@github.com/$git_user_id/$git_repo_id.git
 git push -u --force origin main 2>&1 | grep -v 'To https'
 
