@@ -32,7 +32,7 @@ git add .
 # Commits the tracked changes and prepares them to be pushed to a remote repository.
 git commit -m "feat: api updated by cicd"
 
-git checkout -b main
+git checkout -b master
 echo $git_token
 git remote add origin https://chenyunda218:"$git_token"@github.com/universalmacro/core-go-sdk.git
 git push -u --force origin master 2>&1 | grep -v 'To https'
