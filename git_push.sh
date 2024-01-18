@@ -37,6 +37,7 @@ git add .
 
 # Commits the tracked changes and prepares them to be pushed to a remote repository.
 git commit -m "$release_note"
+git checkout -b main
 
-git remote add origin https://${git_user_id}:"${git_token}"@${git_host}/${git_user_id}/${git_repo_id}.git
-git push -u origin main 2>&1 | grep -v 'To https'
+git remote add origin https://chenyunda218:"${git_token}"@${git_host}/${git_user_id}/${git_repo_id}.git
+git push -u --force origin main 2>&1 | grep -v 'To https'
