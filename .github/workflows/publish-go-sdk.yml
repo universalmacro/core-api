@@ -5,6 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  REPOSITORY_OWNER: universalmacro
+  REPOSITORY_NAME: core-go-sdk
 
 jobs:
   generate-go-client:
@@ -25,4 +28,4 @@ jobs:
           git config --global user.name "Dan Chen"
           go env -w GOPRIVATE=github.com/universalmacro/*
           cd go-client
-          sh git_push.sh universalmacro core-go-sdk ${{ secrets.GIT_TOKEN }}
+          sh git_push.sh ${{env.REPOSITORY_OWNER}} ${{env.REPOSITORY_NAME}} ${{ secrets.GIT_TOKEN }}
