@@ -441,6 +441,8 @@ components:
         password:
           type: string
         database:
+          type: string
+        type:
           $ref: '#/components/schemas/DatabaseType'
     DatabaseType:
       type: string
