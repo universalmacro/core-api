@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
 env:
-  REPOSITORY_OWNER: ${{ github.repository_owner }}}
+  REPOSITORY_OWNER: ${{ github.repository_owner }}
   REPOSITORY_NAME: core-api-interfaces
   EMAIL: "chenyunda218@gmail.com"
   VERSION: "ba0b5a1"
@@ -29,7 +29,6 @@ jobs:
           go get github.com/gin-gonic/gin
           go install github.com/universalmacro/openapi-go-generator@${{env.VERSION}}
           go run github.com/universalmacro/openapi-go-generator@${{env.VERSION}} ../openapi.yml core-api-interfaces ./api.go
-          cat ./api.go
           git config --global user.email "${{env.EMAIL}}"
           git config --global user.name "Dan Chen"
           go env -w GOPRIVATE=github.com/universalmacro/*

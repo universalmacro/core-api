@@ -3,7 +3,7 @@ name: Publish Go SDK
 on:
   workflow_dispatch:
 env:
-  REPOSITORY_OWNER: ${{ github.repository_owner }}}
+  REPOSITORY_OWNER: ${{ github.repository_owner }}
   REPOSITORY_NAME: core-go-sdk
   EMAIL: "chenyunda218@gmail.com"
 jobs:
