@@ -33,5 +33,5 @@ jobs:
           git config --global user.email "${{env.EMAIL}}"
           git config --global user.name "Dan Chen"
           go env -w GOPRIVATE=github.com/universalmacro/*
-          #mv ../git_push.sh .
-          #sh git_push.sh ${{env.REPOSITORY_OWNER}} ${{env.REPOSITORY_NAME}} ${{ secrets.GIT_TOKEN }}
+          cp ../git_push.sh .
+          sh git_push.sh ${{env.REPOSITORY_OWNER}} ${{env.REPOSITORY_NAME}} ${{ secrets.GIT_TOKEN }}
