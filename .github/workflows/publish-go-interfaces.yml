@@ -28,8 +28,9 @@ jobs:
           go get github.com/gin-gonic/gin
           go install github.com/universalmacro/openapi-go-generator@main
           go run github.com/universalmacro/openapi-go-generator@main ../openapi.yml core-api-interfaces ./api.go
+          cat ./api.go
           git config --global user.email "${{env.EMAIL}}"
           git config --global user.name "Dan Chen"
           go env -w GOPRIVATE=github.com/universalmacro/*
-          mv ../git_push.sh .
-          sh git_push.sh ${{env.REPOSITORY_OWNER}} ${{env.REPOSITORY_NAME}} ${{ secrets.GIT_TOKEN }}
+          #mv ../git_push.sh .
+          #sh git_push.sh ${{env.REPOSITORY_OWNER}} ${{env.REPOSITORY_NAME}} ${{ secrets.GIT_TOKEN }}
