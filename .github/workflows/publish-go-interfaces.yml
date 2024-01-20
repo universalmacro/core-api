@@ -23,7 +23,7 @@ jobs:
           cd go-api-interfaces
           go mod init github.com/universalmacro/core-api-interfaces
           go get github.com/gin-gonic/gin
-          go install github.com/universalmacro/openapi-go-generator
+          go install github.com/universalmacro/openapi-go-generator@main
           go run github.com/universalmacro/openapi-go-generator ./openapi.yml core-api-interfaces ./api.go
           git config --global user.email "${{env.EMAIL}}"
           git config --global user.name "Dan Chen"
