@@ -462,6 +462,7 @@ components:
       required:
         - id
         - account
+        - createdAt
       properties:
         id:
           type: string
