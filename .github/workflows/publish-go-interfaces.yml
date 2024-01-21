@@ -9,7 +9,7 @@ env:
   REPOSITORY_OWNER: ${{ github.repository_owner }}
   REPOSITORY_NAME: core-api-interfaces
   EMAIL: "chenyunda218@gmail.com"
-  GEN_VERSION: "bbb0d6e"
+  GEN_VERSION: "21106e0"
 jobs:
   generate-go-client:
     runs-on: ubuntu-latest
