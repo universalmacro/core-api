@@ -299,12 +299,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DBConfig'
+  /nodes/domains/{domain}/configs/apis:
+    get:
+      tags: [Node]
+      description: Get node info by id
+      parameters:
+        - name: domain
+          in: path
+          schema:
+            type: string
+          required: true
+      operationId: GetNodeApiConfigByDomain
+      responses:
+        '200':
+          description: 'Get Node info'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiConfig'
+        '204':
+          description: 'Not set yet'
   /nodes/{id}/merchants:
     get:
       tags: [Merchant]
       description: List merchants
       operationId: ListNodeMerchants
       parameters:
+        - $ref: '#/components/parameters/ID'
         - $ref: '#/components/parameters/IndexParam'
         - $ref: '#/components/parameters/LimitParam'
       responses:
