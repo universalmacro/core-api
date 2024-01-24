@@ -590,6 +590,7 @@ components:
       type: object
       required:
         - id
+        - merchantShortId
         - nodeId
         - account
         - name
@@ -597,6 +598,8 @@ components:
         - updatedAt
       properties:
         id:
+          type: string
+        merchantShortId:
           type: string
         nodeId:
           type: string
