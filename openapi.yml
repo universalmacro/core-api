@@ -347,7 +347,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateMerchantRequest'
       responses:
-        '200':
+        '201':
           description: 'Add Merchant to node'
           content:
             application/json:
