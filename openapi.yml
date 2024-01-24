@@ -638,6 +638,7 @@ components:
       description: 'Current page index'
       schema:
         type: integer
+        format: int64
         minimum: 0
         default: 0
     LimitParam:
@@ -646,6 +647,7 @@ components:
       description: 'Total pages'
       schema:
         type: integer
+        format: int64
         minimum: 1
         default: 1
     ID:
