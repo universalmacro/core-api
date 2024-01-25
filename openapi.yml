@@ -357,6 +357,7 @@ paths:
     get:
       tags: [Merchant]
       description: Get merchant info by id
+      operationId: GetMerchant
       parameters:
         - in: path
           name: nodeId
@@ -368,7 +369,6 @@ paths:
           schema:
             type: string
           required: true
-      operationId: GetMerchant
       responses:
         '200':
           description: 'Get Merchant info'
@@ -379,9 +379,9 @@ paths:
     delete:
       tags:
         - Merchant
+      operationId: DeleteMerchant
       parameters:
         - $ref: '#/components/parameters/ID'
-      operationId: DeleteMerchant
       responses:
         '204':
           description: 'Deleted'
