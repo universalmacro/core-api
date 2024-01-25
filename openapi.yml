@@ -353,27 +353,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Merchant'
-  /merchants:
-    get:
-      tags: [Merchant]
-      description: List merchants
-      operationId: ListMerchants
-      parameters:
-        - $ref: '#/components/parameters/IndexParam'
-        - $ref: '#/components/parameters/LimitParam'
-      responses:
-        '200':
-          description: 'List Merchant of node'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MerchantList'
-  /merchants/{id}:
+  /nodes/{nodeId}/merchants/{merchantId}:
     get:
       tags: [Merchant]
       description: Get merchant info by id
       parameters:
-        - $ref: '#/components/parameters/ID'
+        - in: path
+          name: nodeId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: merchantId
+          schema:
+            type: string
+          required: true
       operationId: GetMerchant
       responses:
         '200':
