@@ -353,6 +353,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Merchant'
+  /merchants:
+    get:
+      tags: [Merchant]
+      description: List merchants
+      operationId: ListMerchants
+      parameters:
+        - $ref: '#/components/parameters/IndexParam'
+        - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: 'List Merchant of node'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantList'
+  /merchants/{id}:
+    get:
+      tags: [Merchant]
+      description: Get merchant info by id
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      operationId: GetMerchant
+      responses:
+        '200':
+          description: 'Get Merchant info'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Merchant'
+    delete:
+      tags:
+        - Merchant
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      operationId: DeleteMerchant
+      responses:
+        '204':
+          description: 'Deleted'
 components:
   securitySchemes:
     ApiKeyAuth:
