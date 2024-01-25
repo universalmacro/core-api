@@ -35,5 +35,7 @@ jobs:
           git config --global user.email "${{env.EMAIL}}"
           git config --global user.name "${{env.USERNAME}}"
           go env -w GOPRIVATE=github.com/universalmacro/*
+          cp ../go-client/git_push.sh .
+          sh git_push.sh ${{env.REPOSITORY_OWNER}} ${{env.REPOSITORY_NAME}} ${{secrets.GIT_TOKEN}}
           cp ../go-interfaces-notification.sh .
           sh go-interfaces-notification.sh ${{env.WECOM_WEBHOOK_URL}} ${{env.REPOSITORY_NAME}} `git rev-parse HEAD | cut -c 1-7`
