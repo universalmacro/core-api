@@ -17,9 +17,9 @@ jobs:
       - name: Generate Go Client
         uses: openapi-generators/openapitools-generator-action@v1
         with:
-          openapi-file: openapi.yml
+          openapi-file: swagger.yml
           generator: go
-          config-file: openapi-ts-config.yml
+          config-file: swagger-ts-config.yml
       - name: Push to core-go-sdk
         run: |
           git config --global user.email "${{env.EMAIL}}"
