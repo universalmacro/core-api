@@ -227,6 +227,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NodeConfig'
+  /nodes/config/api:
+    get:
+      tags: [Node]
+      description: Get node info by domain
+      operationId: GetNodeConfigByDomain
+      parameters:
+        - name: domain
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Get Node info'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeConfig'
+        '204':
+          description: 'Not set yet'
 components:
   securitySchemes:
     ApiKeyAuth:
