@@ -301,6 +301,8 @@ components:
     NodeConfig:
       type: object
       properties:
+        frontendDomain:
+          type: string
         api:
           $ref: '#/components/schemas/ApiConfig'
         server:
