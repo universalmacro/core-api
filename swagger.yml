@@ -13,7 +13,6 @@ tags:
   - name: Admin
   - name: Session
   - name: Node
-  - name: Merchant
 paths:
   /admins:
     post:
@@ -231,7 +230,7 @@ paths:
     get:
       tags: [Node]
       description: Get node info by domain
-      operationId: GetNodeConfigByDomain
+      operationId: GetNodeApiConfigByDomain
       parameters:
         - name: domain
           in: query
@@ -467,58 +466,6 @@ components:
           type: integer
           format: int64
           description: 'Total page'
-    CreateMerchantRequest:
-      type: object
-      required:
-        - merchantShortId
-        - account
-        - password
-      properties:
-        merchantShortId:
-          type: string
-        account:
-          type: string
-        password:
-          type: string
-    Merchant:
-      type: object
-      required:
-        - id
-        - merchantShortId
-        - nodeId
-        - account
-        - name
-        - createdAt
-        - updatedAt
-      properties:
-        id:
-          type: string
-        merchantShortId:
-          type: string
-        nodeId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        createdAt:
-          type: integer
-          format: int64
-        updatedAt:
-          type: integer
-          format: int64
-    MerchantList:
-      type: object
-      required:
-        - items
-        - pagination
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Merchant'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
   parameters:
     Ordering:
       name: ordering
