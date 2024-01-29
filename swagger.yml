@@ -311,6 +311,8 @@ components:
           $ref: '#/components/schemas/DBConfig'
         redis:
           $ref: '#/components/schemas/RedisConfig'
+        tencentCloud:
+          $ref: '#/components/schemas/TencentCloudConfig'
     RedisConfig:
       type: object
       properties:
