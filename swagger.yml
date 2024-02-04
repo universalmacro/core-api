@@ -87,6 +87,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Admin'
+  /admins/{id}/roles:
+    put:
+      tags: [Admin]
+      description: Update admin role
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      operationId: UpdateAdminRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: 'Update role success'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
   /admins/self:
     get:
       tags: [Admin]
@@ -248,7 +269,7 @@ paths:
           description: 'Not set yet'
   /roles:
     get:
-      tags: [Admin]
+      tags: [Role]
       description: List roles
       parameters:
         - $ref: '#/components/parameters/IndexParam'
@@ -264,7 +285,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/RoleList'
     post:
-      tags: [Admin]
+      tags: [Role]
       description: Create role
       operationId: CreateRole
       requestBody:
@@ -281,7 +302,7 @@ paths:
                 $ref: '#/components/schemas/Role'
   /roles/{id}:
     get:
-      tags: [Admin]
+      tags: [Role]
       description: Get role by id
       operationId: GetRole
       parameters:
@@ -294,7 +315,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Role'
     put:
-      tags: [Admin]
+      tags: [Role]
       description: Update role by id
       operationId: UpdateRole
       parameters:
@@ -312,7 +333,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Role'
     delete:
-      tags: [Admin]
+      tags: [Role]
       description: Delete role by id
       operationId: DeleteRole
       parameters:
@@ -322,7 +343,7 @@ paths:
           description: 'Role deleted'
   /roles/{id}/permissions:
     get:
-      tags: [Admin]
+      tags: [Role]
       description: Get role permissions by id
       operationId: GetRolePermissions
       parameters:
@@ -335,7 +356,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PermissionDomainArray'
     put:
-      tags: [Admin]
+      tags: [Role]
       description: Update role permissions by id
       operationId: UpdateRolePermissions
       parameters:
@@ -559,6 +580,16 @@ components:
           type: string
         description:
           type: string
+    AddRolesRequest:
+      description: 'Add role request schema'
+      required:
+        - roles
+      type: object
+      properties:
+        rolesIds:
+          type: array
+          items:
+            type: string
     Role:
       type: object
       required:
