@@ -246,6 +246,112 @@ paths:
                 $ref: '#/components/schemas/ApiConfig'
         '204':
           description: 'Not set yet'
+  /roles:
+    get:
+      tags: [Admin]
+      description: List roles
+      parameters:
+        - $ref: '#/components/parameters/IndexParam'
+        - $ref: '#/components/parameters/LimitParam'
+      operationId: ListRoles
+      responses:
+        '200':
+          description: 'List roles'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleList'
+    post:
+      tags: [Admin]
+      description: Create role
+      operationId: CreateRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRoleRequest'
+      responses:
+        '201':
+          description: 'Role created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+  /roles/{id}:
+    get:
+      tags: [Admin]
+      description: Get role by id
+      operationId: GetRole
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: 'Get role'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+    put:
+      tags: [Admin]
+      description: Update role by id
+      operationId: UpdateRole
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoleRequest'
+      responses:
+        '200':
+          description: 'Role updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+    delete:
+      tags: [Admin]
+      description: Delete role by id
+      operationId: DeleteRole
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '204':
+          description: 'Role deleted'
+  /roles/{id}/permissions:
+    get:
+      tags: [Admin]
+      description: Get role permissions by id
+      operationId: GetRolePermissions
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      responses:
+        '200':
+          description: 'Get role permissions'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionDomainArray'
+    put:
+      tags: [Admin]
+      description: Update role permissions by id
+      operationId: UpdateRolePermissions
+      parameters:
+        - $ref: '#/components/parameters/ID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionDomainArray'
+      responses:
+        '200':
+          description: 'Role permissions updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionDomainArray'
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -390,7 +496,7 @@ components:
         phoneNumber:
           $ref: '#/components/schemas/PhoneNumber'
         role:
-          $ref: '#/components/schemas/Role'
+          type: string
         createdAt:
           type: integer
           format: int64
@@ -430,10 +536,72 @@ components:
         password:
           type: string
         role:
-          $ref: '#/components/schemas/Role'
+          type: string
+    CreateRoleRequest:
+      description: 'Create role request schema'
+      required:
+        - name
+        - description
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    UpdateRoleRequest:
+      description: 'Update role request schema'
+      required:
+        - name
+        - description
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
     Role:
-      type: string
-      enum: [ROOT, ADMIN]
+      type: object
+      required:
+        - id
+        - name
+        - description
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    RoleList:
+      type: object
+      required:
+        - items
+        - pagination
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    PermissionDomain:
+      type: object
+      required:
+        - domain
+        - description
+      properties:
+        domain:
+          type: string
+        description:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+    PermissionDomainArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/PermissionDomain'
     UpdatePasswordRequest:
       type: object
       required:
