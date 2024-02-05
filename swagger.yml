@@ -159,12 +159,8 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateTotpRequest'
       responses:
-        '200':
-          description: 'Create totp success'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Totp'
+        '204':
+          description: 'Update totp success'
   /sessions:
     post:
       tags: [Session]
