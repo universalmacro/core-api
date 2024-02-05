@@ -151,8 +151,8 @@ paths:
                 $ref: '#/components/schemas/Totp'
     put:
       tags: [Admin]
-      description: Create totp
-      operationId: CreateTotp
+      description: Update totp
+      operationId: UpdateTotp
       requestBody:
         content:
           application/json:
