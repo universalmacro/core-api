@@ -137,6 +137,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Admin'
+  /admins/self/totp:
+    get:
+      tags:
+        - Admin
+      operationId: GetTotp
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Totp'
+    put:
+      tags: [Admin]
+      description: Create totp
+      operationId: CreateTotp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTotpRequest'
+      responses:
+        '200':
+          description: 'Create totp success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Totp'
   /sessions:
     post:
       tags: [Session]
@@ -509,6 +537,7 @@ components:
         - account
         - createdAt
         - updatedAt
+        - hasTotp
       properties:
         id:
           type: string
@@ -518,6 +547,8 @@ components:
           $ref: '#/components/schemas/PhoneNumber'
         role:
           type: string
+        hasTotp:
+          type: boolean
         createdAt:
           type: integer
           format: int64
@@ -557,6 +588,23 @@ components:
         password:
           type: string
         role:
+          type: string
+    UpdateTotpRequest:
+      type: object
+      required:
+        - url
+        - totpCode
+      properties:
+        url:
+          type: string
+        totpCode:
+          type: string
+    Totp:
+      type: object
+      required:
+        - url
+      properties:
+        url:
           type: string
     CreateRoleRequest:
       description: 'Create role request schema'
