@@ -492,6 +492,7 @@ components:
           type: string
         secretKey:
           type: string
+        
     DBConfig:
       type: object
       required:
